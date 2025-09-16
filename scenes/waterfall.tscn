@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7aofngvwm68w"]
+
+[ext_resource type="Texture2D" uid="uid://dw6fj40kkc3t" path="res://assets/tilesets/Tiles.png" id="1_c4i1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwatv"]
+atlas = ExtResource("1_c4i1o")
+region = Rect2(80, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deq8o"]
+atlas = ExtResource("1_c4i1o")
+region = Rect2(80, 288, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbqhg"]
+atlas = ExtResource("1_c4i1o")
+region = Rect2(80, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yo30"]
+atlas = ExtResource("1_c4i1o")
+region = Rect2(80, 320, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c6kc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwatv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deq8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbqhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yo30")
+}],
+"loop": true,
+"name": &"waterfallleft",
+"speed": 10.0
+}]
+
+[node name="waterfallleft" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c6kc5")
+animation = &"waterfallleft"
+autoplay = "waterfallleft"
+frame_progress = 0.53463453
