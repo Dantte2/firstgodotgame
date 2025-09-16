@@ -247,7 +247,7 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-35, -50)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"land"
+animation = &"idle"
 autoplay = "idle"
 centered = false
 
