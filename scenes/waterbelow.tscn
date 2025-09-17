@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://405qrkmch48b"]
+
+[ext_resource type="Texture2D" uid="uid://dw6fj40kkc3t" path="res://assets/tilesets/Tiles.png" id="1_1tr7r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2iau"]
+atlas = ExtResource("1_1tr7r")
+region = Rect2(96, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h53w7"]
+atlas = ExtResource("1_1tr7r")
+region = Rect2(112, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vg4y"]
+atlas = ExtResource("1_1tr7r")
+region = Rect2(128, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffphp"]
+atlas = ExtResource("1_1tr7r")
+region = Rect2(144, 304, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ki1n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2iau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h53w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vg4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffphp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="waterbelow" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8ki1n")
+autoplay = "default"

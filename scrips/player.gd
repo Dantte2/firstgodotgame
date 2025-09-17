@@ -9,7 +9,11 @@ var last_direction := 1  # 1 = right (default), -1 = left
 var jumpend_timer := 0.0
 var was_on_floor := true  # Track previous frame's floor status
 
+var attack_range_offset_x := 0.0  # Store original AttackRange offset
+
 func _ready():
+	# Store the original X position of AttackRange (should be positive)
+	attack_range_offset_x = $AttackRange.position.x
 	set_state("idle")
 
 func _physics_process(delta):
@@ -99,7 +103,10 @@ func update_state(delta):
 
 	# Flip sprite based on last_direction instead of current direction
 	$AnimatedSprite2D.flip_h = last_direction < 0
-
+	
+	# Flip AttackRange position based on stored offset and direction
+	$AttackRange.position.x = attack_range_offset_x * last_direction
+	
 	if on_floor:
 		if jumpend_timer > 0:
 			jumpend_timer -= delta
