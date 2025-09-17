@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2ga736eqh28h"]
+
+[ext_resource type="Texture2D" uid="uid://ddk5e7hx2jn73" path="res://assets/hud/hud.png" id="1_3wuln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxtc6"]
+atlas = ExtResource("1_3wuln")
+region = Rect2(306.898, 5.881, 58.4927, 4.7399)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlsqs"]
+atlas = ExtResource("1_3wuln")
+region = Rect2(307.971, 70.9442, 56.0654, 2.11819)
+
+[node name="hpbar" type="TextureProgressBar"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 235.0
+offset_bottom = 40.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_nxtc6")
+texture_progress = SubResource("AtlasTexture_jlsqs")

@@ -40,19 +40,27 @@ func set_state(new_state: String):
 	match state:
 		"idle":
 			$AnimatedSprite2D.play("idle")
+			$AttackRange.monitoring = false
 		"walk":
 			$AnimatedSprite2D.play("walk")
+			$AttackRange.monitoring = false
 		"jump_start":
 			$AnimatedSprite2D.play("jumpstart")
+			$AttackRange.monitoring = false
 		"jump_end":
 			$AnimatedSprite2D.play("jumpend")
+			$AttackRange.monitoring = false
 			jumpend_timer = 0.3  # or use get_animation_length("jumpend")
 		"attack":
 			$AnimatedSprite2D.play("attack")
+			$AttackRange.monitoring = true
+			velocity.x = 0  # Immediately stop horizontal movement when attacking
 		"fall":
 			$AnimatedSprite2D.play("fall")
+			$AttackRange.monitoring = false
 		"land":
 			$AnimatedSprite2D.play("land")
+			$AttackRange.monitoring = false
 
 # -----------------------------
 # 🔁 STATE UPDATE
@@ -84,7 +92,10 @@ func update_state(delta):
 		return
 
 	# Movement
-	velocity.x = direction * SPEED
+	if state != "attack":
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = 0
 
 	# Flip sprite based on last_direction instead of current direction
 	$AnimatedSprite2D.flip_h = last_direction < 0
@@ -105,6 +116,7 @@ func update_state(delta):
 			set_state("fall")
 
 	was_on_floor = on_floor  # Update for next frame
+
 
 # -----------------------------
 # 📦 Animation Finish Callback
@@ -127,3 +139,9 @@ func get_animation_length(anim_name: String) -> float:
 	var frame_count = $AnimatedSprite2D.frames.get_frame_count(anim_name)
 	var fps = $AnimatedSprite2D.frames.get_animation_speed(anim_name)
 	return frame_count / float(fps) if fps != 0 else 0.0
+
+
+func _on_attackrange_body_entered(body: Node):
+	if body.is_in_group("enemies"):
+		if body.has_method("take_hit"):
+			body.take_hit()

@@ -12,12 +12,12 @@ config_version=5
 
 config/name="FirstGame"
 run/main_scene="uid://bn1uih7pijm1q"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YATI/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

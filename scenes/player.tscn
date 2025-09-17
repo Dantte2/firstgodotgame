@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dkneadtfo8jwp"]
+[gd_scene load_steps=38 format=3 uid="uid://dkneadtfo8jwp"]
 
 [ext_resource type="Texture2D" uid="uid://batgjwqkj265f" path="res://assets/player/idle/Idle-Sheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c3pst6vx34r0n" path="res://scrips/player.gd" id="1_g2els"]
@@ -240,19 +240,32 @@ animations = [{
 radius = 11.0
 height = 34.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
+size = Vector2(21, 55.5)
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(265, 222)
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-35, -50)
+position = Vector2(-36, -51)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -7)
 shape = SubResource("CapsuleShape2D_g2els")
 
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(36.5, -9.75)
+shape = SubResource("RectangleShape2D_tuyoq")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attackrange_body_entered"]
