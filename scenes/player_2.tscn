@@ -428,3 +428,5 @@ shape = SubResource("CapsuleShape2D_s551d")
 position = Vector2(30, 23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
