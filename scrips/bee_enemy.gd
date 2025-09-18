@@ -25,10 +25,10 @@ func _physics_process(delta):
 	velocity.x = speed * direction.x
 	move_and_slide()
 
-	# Patrol between x=100 and x=500
+	# Patrol between x=100 and x=300
 	if position.x < 100:
 		direction = Vector2.RIGHT
-	elif position.x > 500:
+	elif position.x > 300:
 		direction = Vector2.LEFT
 
 	# Flip sprite based on direction

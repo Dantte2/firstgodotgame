@@ -54,11 +54,11 @@ func set_state(new_state: String):
 		"jump_end":
 			$AnimatedSprite2D.play("jumpend")
 			$AttackRange.monitoring = false
-			jumpend_timer = 0.3  # or use get_animation_length("jumpend")
+			jumpend_timer = 0.3  
 		"attack":
 			$AnimatedSprite2D.play("attack")
 			$AttackRange.monitoring = true
-			velocity.x = 0  # Immediately stop horizontal movement when attacking
+			velocity.x = 0  
 		"fall":
 			$AnimatedSprite2D.play("fall")
 			$AttackRange.monitoring = false
@@ -139,7 +139,7 @@ func _on_animated_sprite_2d_animation_finished():
 		else:
 			set_state("walk")
 
-# Optional: Auto calculate animation length (for jumpend)
+# Auto calculate animation length
 func get_animation_length(anim_name: String) -> float:
 	if not $AnimatedSprite2D.frames:
 		return 0.0
